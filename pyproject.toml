@@ -50,8 +50,8 @@ plotting = ["matplotlib"]
 [tool.poetry.dev-dependencies]
 Cython = "^0.29.33"
 black = ">22.12.0"
-pydata-sphinx-theme = "^0.12.0"
-Sphinx = "^6.1.0"
+pydata-sphinx-theme = "^0.14.0"
+Sphinx = "^6.2.0"
 docformatter = "^1.5.1"
 pytest = "^7.2.1"
 coverage = "^7.0.5"
