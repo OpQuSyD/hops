@@ -1,0 +1,98 @@
+[tool.poetry]
+name = "hops"
+description="HOPS implementation of the TU-Dresden Theoretical Quantum Optics Group"
+version = "2.3.0"
+authors = [
+    "Richard Hartmann <richard.hartmann@tu-dresden.de>",
+    "Valentin Boettcher <hiro at protagon.space>"
+]
+license = "BSD (3 clause)"
+classifiers = [
+"Operating System :: OS Independent",
+"License :: OSI Approved :: BSD License",
+"Topic :: Utilities",
+"Intended Audience :: Researcher"
+]
+repository = "https://gitlab.hrz.tu-chemnitz.de/s8896854--tu-dresden.de/hops"
+packages = [
+    { include = "hops" },
+    { include = "cli" },
+]
+
+[tool.poetry.scripts]
+hi = 'cli.hi:main'
+result-utils = 'cli.result_utils:main'
+
+
+[tool.poetry.dependencies]
+python = "^3.9"
+scipy = "^1.10.0"
+h5py = "^3.7.0"
+stocproc = { git = "https://github.com/OpQuSyD/stocproc" }
+binfootprint = "^1.2.0"
+matplotlib = "^3.6.3"
+typer = "^0.7.0"
+click-spinner = "^0.1.10"
+ray = "^2.2.0"
+tqdm = "^4.64.1"
+coloredlogs = "^15.0.1"
+prettytable = "^3.6.0"
+ipython = "^8.8.0"
+numpy = "^1.24.1"
+beartype = "^0.12.0"
+click = "^8.1.3"
+mpmath = "^1.2.1"
+setuptools = "*"
+
+[tool.poetry.extras]
+plotting = ["matplotlib"]
+
+[tool.poetry.dev-dependencies]
+Cython = "^0.29.33"
+black = ">22.12.0"
+pydata-sphinx-theme = "^0.12.0"
+Sphinx = "^6.1.0"
+docformatter = "^1.5.1"
+pytest = "^7.2.1"
+coverage = "^7.0.5"
+pytest-cov = "^4.0.0"
+qutip = "^4.7.1"
+pytest-optional-tests = "^0.1.1"
+ipdb = "^0.13.11"
+
+[build-system]
+requires = ["poetry-core>=1.4.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.coverage.run]
+source = ['hops']
+
+[tool.pytest.ini_options]
+testpaths = [
+    "tests",
+]
+filterwarnings = [
+    "ignore:The distutils:DeprecationWarning",
+    "ignore:this implementation uses:UserWarning"
+]
+addopts = "--cov-config=.coveragerc --cov=hops"
+
+# markers = [
+#    "slow: involved tests not to be run in the CI"
+# ]
+
+optional_tests = "slow: involved tests not to be run in the CI"
+
+[tool.pyright]
+include = ["hops"]
+exclude = [
+    "**/__pycache__",
+    "hops/data/good_*",
+]
+ignore = []
+
+reportMissingImports = true
+reportMissingTypeStubs = false
+useLibraryCodeForTypes = false
+pythonVersion = "3.9"
+pythonPlatform = "Linux"

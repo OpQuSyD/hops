@@ -1,0 +1,7 @@
+* Questions
+** ASK [[file:hops/core/hierarchy_data.py::"if accum_only is 'None' (not set) rand_skip must also be 'None'"][Why randskip none if not accum_only]]
+** ASK [[file:hops/core/hierarchy_data.py:::param nsteps: The maximum number of integration steps passed to][nsteps doesn't seem to be used]]
+
+* Breaking
+** get_samples() -> .samples
+** time_set() -> .time_set
