@@ -190,11 +190,11 @@ class IdxDict:
     def print_all_idx(self):
         """Prints a representation of the lookup table that associates HOPS index
         vectors with a scalar index."""
-        for c in self.idx_dict.keys():
+        for c, idx in self.idx_dict.items():
             print(
                 HiIdx(n_list=self.n_list, other_bin=c).to_string(),
                 " ⟶ ",
-                self.idx_dict[c],
+                idx,
             )
 
     def get_first_hierarchy_indices(self) -> list[np.ndarray]:
