@@ -1,7 +1,7 @@
 """Mulit Index handling for use in HOPS by flattening into one dimension via a lookup table."""
 
 import numpy as np
-from typing import Optional, Union
+from typing import Union
 from collections.abc import Iterator
 from _collections_abc import dict_items
 from ..util.abstract_truncation_scheme import TruncationScheme, TruncationScheme_Simplex
