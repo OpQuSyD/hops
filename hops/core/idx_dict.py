@@ -4,7 +4,7 @@ import numpy as np
 from typing import Optional, Union
 from collections.abc import Iterator
 from _collections_abc import dict_items
-from ..util.abstract_truncation_scheme import TruncationScheme
+from ..util.abstract_truncation_scheme import TruncationScheme, TruncationScheme_Simplex
 from .hi_idx import HiIdx
 
 IdxDictKeyType = Union[bytes, HiIdx]
@@ -171,6 +171,14 @@ class IdxDict:
         self._fill_holes()
 
         return self
+
+    def make_simplex(self, kmax: int) -> "IdxDict":
+        """Generate a set of index vectors using the simplex truncation scheme.
+
+        :param kmax: the simplex parameter
+        """
+
+        return self.make(TruncationScheme_Simplex(kmax))
 
     def num_idx(self) -> int:
         """
