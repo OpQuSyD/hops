@@ -63,8 +63,8 @@ def simplex_condition():
     print("number of HiIdx", d.num_idx())
 
     idx = HiIdx(n_list=n_list)
-    idx._data[0][2] = 1
-    print("example: index of {} is {}".format(idx, d.get_idx(idx)))
+    idx._data[2] = 1
+    print(f"example: index of {idx} is {d.get_idx(idx)}")
 
     print("+---------------------------------+")
     print("|   multi env simplex condition   |")
@@ -77,8 +77,8 @@ def simplex_condition():
     d.print_all_idx()
     print("number of HiIdx", d.num_idx())
     idx = HiIdx(n_list=n_list)
-    idx._data[0][2] = 1
-    print("example: index of {} is {}".format(idx, d.get_idx(idx)))
+    idx._data[2] = 1
+    print(f"example: index of {idx} is {d.get_idx(idx)}")
 
 
 def use_case_in_HOPS():
@@ -94,13 +94,13 @@ def use_case_in_HOPS():
     d.make_simplex(kmax=kmax)
 
     print("go through all hi_idx obtained for some truncation scheme, here simplex")
-    for c in d.idx_dict.keys():
+    for c in d.idx_dict:
         hi_idx = HiIdx(n_list=n_list, other_bin=c)
         print("  at hi_idx", hi_idx, "(idx {})".format(d.get_idx(hi_idx)))
         print("    - coupling to lower tire")
         for i in range(n_list[0]):
             hi_idx2 = HiIdx.from_other(hi_idx)
-            hi_idx2._data[0][i] -= 1
+            hi_idx2._data[i] -= 1
             hi_idx2_bin = hi_idx2.to_bin()
             if hi_idx2_bin in d.idx_dict:
                 print(
@@ -114,7 +114,7 @@ def use_case_in_HOPS():
         print("    - coupling to higher tire")
         for i in range(n_list[0]):
             hi_idx2 = HiIdx.from_other(hi_idx)
-            hi_idx2._data[0][i] += 1
+            hi_idx2._data[i] += 1
             hi_idx2_bin = hi_idx2.to_bin()
             if hi_idx2_bin in d.idx_dict:
                 print(
