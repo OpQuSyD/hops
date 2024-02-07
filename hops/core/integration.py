@@ -269,7 +269,7 @@ def get_M_down(
         hi_idx = indices.bin_to_idx(hi_idx_bin)
 
         # coupling from k=hi_idx[bath_index][i] to k-1
-        for i in range(len(g)):
+        for i, gi in enumerate(g):
             # decrease each entry in k by one
             if hi_idx[bath_index, i] == 0:
                 continue
@@ -278,7 +278,7 @@ def get_M_down(
             hi_idx_to[bath_index, i] -= 1
 
             idx_to = indices[hi_idx_to]
-            data.append(-1j * np.sqrt(hi_idx[bath_index, i] * g[i]))
+            data.append(-1j * np.sqrt(hi_idx[bath_index, i] * gi))
             row.append(idx_ref)
             col.append(idx_to)
 
