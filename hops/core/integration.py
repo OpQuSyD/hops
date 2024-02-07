@@ -204,7 +204,7 @@ def get_M_up(
         hi_idx = indices.bin_to_idx(hi_idx_bin)
 
         # coupling from level k=hi_idx[bath_index][i] to k+1
-        for i in range(len(g)):
+        for i, gi in enumerate(g):
             # increase each entry in kappa by one
             hi_idx_to = HiIdx.from_other(hi_idx)
             hi_idx_to[bath_index, i] += 1
@@ -216,7 +216,7 @@ def get_M_up(
             # in the truncated hierarchy
             if hi_idx_to_bin in indices:
                 idx_to = indices[hi_idx_to_bin]
-                data.append(1j * np.sqrt(hi_idx_to[bath_index, i] * g[i]))
+                data.append(1j * np.sqrt(hi_idx_to[bath_index, i] * gi))
                 row.append(idx_ref)
                 col.append(idx_to)
 
