@@ -79,7 +79,7 @@ r"""
  ~~~~~~~~~~~~~~~~~~~~~~
 
  The following ``get_*`` functions are creating the sparse matrix that
- convey the hiearchy structure.  After those come the `HOPSActor`
+ convey the hierarchy structure.  After those come the `HOPSActor`
  class and its implementation.  They contain everything to actually
  integrate a hops trajectory.  They can be subclassed to implement
  different methods.
