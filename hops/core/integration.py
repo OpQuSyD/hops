@@ -1090,10 +1090,12 @@ class HOPSSupervisor:
     ``hi_key``.
 
     :param hi_key: The HOPS configuration.
-    :param data_name: The name of the database in which the results
-        will be stored.
     :param number_of_samples: The target number of samples that shall
         be computed.
+
+    :param data_name: The name of the database in which the results
+        will be stored.
+
     :param min_sample_index: The smallest sample index to begin with.
 
     :param data_path: The path under which the database is to reside.
