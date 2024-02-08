@@ -200,7 +200,7 @@ class ShiftedBCF:
         :math:`G_i,W_i` with ``n`` terms.
         """
         if not hasattr(self.original_bcf, "exponential_coefficients"):
-            raise NotImplemented(
+            raise NotImplementedError(
                 f"The bcf {self.original_bcf.__name__} does not implement the ``exponential_coefficients`` method."
             )
 
