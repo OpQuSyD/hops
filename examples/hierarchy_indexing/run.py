@@ -6,7 +6,8 @@ import sys
 
 sys.path.append(str(hops_path))
 
-from hops.core.integration import HiIdx, IdxDict
+from hops.core.hi_idx import HiIdx
+from hops.core.idx_dict import IdxDict
 
 
 def useHiIdx():
