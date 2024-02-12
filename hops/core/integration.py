@@ -79,7 +79,7 @@ r"""
  ~~~~~~~~~~~~~~~~~~~~~~
 
  The following ``get_*`` functions are creating the sparse matrix that
- convey the hiearchy structure.  After those come the `HOPSActor`
+ convey the hierarchy structure.  After those come the `HOPSActor`
  class and its implementation.  They contain everything to actually
  integrate a hops trajectory.  They can be subclassed to implement
  different methods.
@@ -204,7 +204,7 @@ def get_M_up(
         hi_idx = indices.bin_to_idx(hi_idx_bin)
 
         # coupling from level k=hi_idx[bath_index][i] to k+1
-        for i in range(len(g)):
+        for i, gi in enumerate(g):
             # increase each entry in kappa by one
             hi_idx_to = HiIdx.from_other(hi_idx)
             hi_idx_to[bath_index, i] += 1
@@ -216,7 +216,7 @@ def get_M_up(
             # in the truncated hierarchy
             if hi_idx_to_bin in indices:
                 idx_to = indices[hi_idx_to_bin]
-                data.append(1j * np.sqrt(hi_idx_to[bath_index, i] * g[i]))
+                data.append(1j * np.sqrt(hi_idx_to[bath_index, i] * gi))
                 row.append(idx_ref)
                 col.append(idx_to)
 
@@ -269,7 +269,7 @@ def get_M_down(
         hi_idx = indices.bin_to_idx(hi_idx_bin)
 
         # coupling from k=hi_idx[bath_index][i] to k-1
-        for i in range(len(g)):
+        for i, gi in enumerate(g):
             # decrease each entry in k by one
             if hi_idx[bath_index, i] == 0:
                 continue
@@ -278,7 +278,7 @@ def get_M_down(
             hi_idx_to[bath_index, i] -= 1
 
             idx_to = indices[hi_idx_to]
-            data.append(-1j * np.sqrt(hi_idx[bath_index, i] * g[i]))
+            data.append(-1j * np.sqrt(hi_idx[bath_index, i] * gi))
             row.append(idx_ref)
             col.append(idx_to)
 
@@ -1090,10 +1090,12 @@ class HOPSSupervisor:
     ``hi_key``.
 
     :param hi_key: The HOPS configuration.
-    :param data_name: The name of the database in which the results
-        will be stored.
     :param number_of_samples: The target number of samples that shall
         be computed.
+
+    :param data_name: The name of the database in which the results
+        will be stored.
+
     :param min_sample_index: The smallest sample index to begin with.
 
     :param data_path: The path under which the database is to reside.

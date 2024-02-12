@@ -1291,7 +1291,7 @@ class HIData:
     def get_sub_rho_t(
         self, idx_low: int, idx_high: int, normed: bool, overwrite=False
     ) -> tuple[np.ndarray, int]:
-        """Returns the system denisty matrix computed using the trajectories with the
+        """Returns the system density matrix computed using the trajectories with the
         indices ``idx_low`` through ``idx_high``, optionally normalized if ``normed`` is
         :any:`True` and the number count that went into calculating the density matrix.
 

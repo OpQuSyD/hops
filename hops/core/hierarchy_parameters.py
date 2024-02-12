@@ -1,19 +1,18 @@
 """Coniguration Parameter Objects for HOPS."""
 from typing import Optional, Union, Any, SupportsFloat
-from collections.abc import Sequence, Callable
+from collections.abc import Sequence
 from enum import Enum
 
 from binfootprint import ABCParameter
 
 from stocproc import StocProc
 from ..util.abstract_truncation_scheme import TruncationScheme, TruncationScheme_Simplex
-import scipy.sparse
 import binfootprint as bf
 from dataclasses import dataclass
 import numpy as np
 from beartype import beartype
 from .idx_dict import IdxDict
-from ..util.dynamic_matrix import DynamicMatrix, ConstantMatrix, MatrixType
+from ..util.dynamic_matrix import DynamicMatrix, ConstantMatrix
 
 
 class ResultType(str, Enum):
