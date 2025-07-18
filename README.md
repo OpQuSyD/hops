@@ -1,4 +1,6 @@
 # HOPS
+[![DOI](https://zenodo.org/badge/729108690.svg)](https://doi.org/10.5281/zenodo.16086862)
+
 Solving Open Quantum System Dynamics with the Hierarchy of Pure States
 (HOPS).
 
