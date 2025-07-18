@@ -200,7 +200,7 @@ class ShiftedBCF:
         :math:`G_i,W_i` with ``n`` terms.
         """
         if not hasattr(self.original_bcf, "exponential_coefficients"):
-            raise NotImplemented(
+            raise NotImplementedError(
                 f"The bcf {self.original_bcf.__name__} does not implement the ``exponential_coefficients`` method."
             )
 
@@ -290,9 +290,12 @@ class OhmicBCF_zeroTemp(object):
         self.__init__(*state)
 
     def __eq__(self, other):
-        return (
-            (self.s == other.s) and (self.eta == other.eta) and (self.w_c == other.w_c)
-        )
+        try:
+            return (
+                (self.s == other.s) and (self.eta == other.eta) and (self.w_c == other.w_c)
+            )
+        except AttributeError:
+            return False
 
     def __repr__(self):
         return f"{self.__class__.__name__}({self.s}, {self.eta}, {self.w_c}, {self.normed}, {self.unit_strength_normalization})"
